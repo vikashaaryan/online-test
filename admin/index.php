@@ -14,10 +14,11 @@ include_once "../config/connect.php";
 
 <body class="bg-gray-400">
     <?php include_once "include/heade.php"; ?>
-    <?php include_once "include/subheader.php"; ?> 
-    <div class="p-10 flex h-[35rem] justify-center items-center">
+    <?php include_once "include/subheader.php"; ?>
+
+    <div class="p-10 flex h-[35rem] justify-center items-center mt-16">
         <div id="default-tab-content">
-            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="home" role="tabpanel"
+            <div class=" p-4 bg  rounded-lg bg-gray-50 bg-white" id="home" role="tabpanel"
                 aria-labelledby="home">
                 <table class="w-[50rem]">
                     <thead>
@@ -39,17 +40,19 @@ include_once "../config/connect.php";
                                 <td class="p-2 border-y border-gray-600"><?= $quiz['id']; ?></td>
                                 <td class="p-2 border-y border-gray-600"><?= $quiz['title']; ?></td>
                                 <td class="p-2 border-y border-gray-600"><?= $quiz['total_question']; ?></td>
-                                <td class="p-2 border-y border-gray-600"><?= $quiz['total_question'] * $quiz['right_answer_marks'] ?></td>
+                                <td class="p-2 border-y border-gray-600">
+                                    <?= $quiz['total_question'] * $quiz['right_answer_marks'] ?>
+                                </td>
                                 <td class="p-2 border-y border-gray-600"><?= $quiz['time_limit']; ?></td>
                                 <td class="p-2 border-y border-gray-600">
-                                    <a href="" class="bg-green-600 px-2 py-1 text-white font-semibold">Start</a>
+                                    <a href="../starttest.php" class="bg-green-600 px-2 py-1 text-white font-semibold">Start</a>
                                 </td>
                             </tr>
                         </tbody>
                     <?php endwhile; ?>
                 </table>
             </div>
-            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="user" role="tabpanel"
+            <div class="hidden p-4 rounded-lg bg-gray-50 bg-white" id="user" role="tabpanel"
                 aria-labelledby="user-tab">
                 <table class="w-[55rem]">
                     <thead>
@@ -76,14 +79,15 @@ include_once "../config/connect.php";
                                 <td class="p-2 border-y border-gray-600"><?= $user['email'] ?></td>
                                 <td class="p-2 border-y border-gray-600"><?= $user['contact'] ?></td>
                                 <td class="p-2 border-y border-gray-600">
-                                    <a href="?deleteUser=<?= $user['user_id']; ?>" class="bg-green-600 px-2 py-1 text-white font-semibold">Delete</a>
+                                    <a href="?deleteUser=<?= $user['user_id']; ?>"
+                                        class="bg-green-600 px-2 py-1 text-white font-semibold">Delete</a>
                                 </td>
                             </tr>
                         </tbody>
                     <?php endwhile; ?>
                 </table>
             </div>
-            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="ranking" role="tabpanel"
+            <div class="hidden p-4 rounded-lg bg-gray-50 bg-white" id="ranking" role="tabpanel"
                 aria-labelledby="ranking-tab">
                 <table class="w-[50rem]">
                     <thead>
@@ -106,7 +110,7 @@ include_once "../config/connect.php";
                     </tbody>
                 </table>
             </div>
-            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="feedback" role="tabpanel"
+            <div class="hidden p-4 rounded-lg bg-gray-50 bg-white" id="feedback" role="tabpanel"
                 aria-labelledby="feedback-tab">
                 <table class="w-[60rem]">
                     <thead>
@@ -129,24 +133,29 @@ include_once "../config/connect.php";
                                 <td class="p-2 border-y border-gray-600"><?= $user['id']; ?></td>
                                 <td class="p-2 border-y text-blue-500 border-gray-600"><?= $user['subject']; ?></td>
                                 <td class="p-2 border-y border-gray-600"><?= $user['email']; ?></td>
-                                <td class="p-2 border-y border-gray-600"><?= date('Y-m-d', strtotime($user['date_time'])); ?></td>
-                                <td class="p-2 border-y border-gray-600"><?= date("h:i A", strtotime($user['date_time'])); ?></td>
+                                <td class="p-2 border-y border-gray-600">
+                                    <?= date('Y-m-d', strtotime($user['date_time'])); ?>
+                                </td>
+                                <td class="p-2 border-y border-gray-600">
+                                    <?= date("h:i A", strtotime($user['date_time'])); ?>
+                                </td>
                                 <td class="p-2 border-y border-gray-600"><?= $user['name']; ?></td>
                                 <td class="p-2 border-y border-gray-600">
-                                    <a href="?deleteFeedback=<?= $user['id']; ?>" class="bg-green-600 px-2 py-1 text-white font-semibold">Delete</a>
+                                    <a href="?deleteFeedback=<?= $user['id']; ?>"
+                                        class="bg-green-600 px-2 py-1 text-white font-semibold">Delete</a>
                                 </td>
                             </tr>
                         </tbody>
                     <?php endwhile; ?>
                 </table>
             </div>
-            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="quiz" role="tabpanel"
+            <div class="hidden p-4 rounded-lg bg-gray-50 bg-white" id="quiz" role="tabpanel"
                 aria-labelledby="quiz-tab">
 
                 <table class="w-[60rem]">
                     <div class="flex justify-between">
                         <h1 class="text-xl font-bold mb-5">Manage Quiz</h1>
-                        <a href="addQuiz.php"
+                        <a href="addquiz.php"
                             class="text-lg bg-green-600 text-white rounded px-3 py-1 font-semibold mb-5">Add Quiz</a>
                     </div>
                     <thead>
@@ -168,10 +177,13 @@ include_once "../config/connect.php";
                                 <td class="p-2 border-y border-gray-600"><?= $quiz['id']; ?></td>
                                 <td class="p-2 border-y border-gray-600"><?= $quiz['title']; ?></td>
                                 <td class="p-2 border-y border-gray-600"><?= $quiz['total_question']; ?></td>
-                                <td class="p-2 border-y border-gray-600"><?= $quiz['total_question'] * $quiz['right_answer_marks'] ?></td>
+                                <td class="p-2 border-y border-gray-600">
+                                    <?= $quiz['total_question'] * $quiz['right_answer_marks'] ?>
+                                </td>
                                 <td class="p-2 border-y border-gray-600"><?= $quiz['time_limit']; ?></td>
                                 <td class="p-2 border-y border-gray-600">
-                                    <a href="?removeQuiz=<?= $quiz['id']; ?>" class="bg-red-600 px-2 py-1 text-white font-semibold">Remove</a>
+                                    <a href="?removeQuiz=<?= $quiz['id']; ?>"
+                                        class="bg-red-600 px-2 py-1 text-white font-semibold">Remove</a>
                                 </td>
                             </tr>
                         </tbody>
@@ -179,10 +191,64 @@ include_once "../config/connect.php";
 
                 </table>
             </div>
+            <div class="hidden p-4 overflow-y-auto h-auto mt-20 rounded-lg bg-gray-50 bg-white" id="question" role="tabpanel"
+                aria-labelledby="question-tab">
+                <div class="flex">
+                    <form action="" method="POST" class="space-y-4">
+                        <label for="test" class="block text-sm font-medium">Select Quiz:</label>
+                        <select name="topic" id="test" class="w-full p-2 border rounded">
+                            <option value="">-- Select Quiz --</option>
+                            <?php
+                            $callingquiz = $connect->query("select * from quiz");
+                            while ($quiz = $callingquiz->fetch_array()):
+                            ?>
+                                <option value="<?= $quiz['title']; ?>"><?= $quiz['title']; ?></option>
+                            <?php endwhile; ?>
+                        </select>
+
+                        <div id="questions-container">
+                            <div class="question-block space-y-2">
+                                <input type="text" name="question" placeholder="Enter Question" required
+                                    class="w-full p-2 border rounded">
+                                <input type="text" name="option1" placeholder="Option 1" required
+                                    class="w-full p-2 border rounded">
+                                <input type="text" name="option2" placeholder="Option 2" required
+                                    class="w-full p-2 border rounded">
+                                <input type="text" name="option3" placeholder="Option 3" required
+                                    class="w-full p-2 border rounded">
+                                <input type="text" name="option4" placeholder="Option 4" required
+                                    class="w-full p-2 border rounded">
+                                <label for="correct_answer" class="block text-sm font-medium">Correct Answer:</label>
+                                <input type="text" name="correct_answer" placeholder="Ans" required
+                                    class="w-full p-2 border rounded">
+                            </div>
+                        </div>
+                        <button type="submit" name="save"
+                            class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Submit</button>
+                    </form>
+                    <?php
+                    if (isset(($_POST['save']))) {
+                        $topic = $_POST['topic'];
+                        $question = $_POST['question'];
+                        $option1 = $_POST['option1'];
+                        $option2 = $_POST['option2'];
+                        $option3 = $_POST['option3'];
+                        $option4 = $_POST['option4'];
+                        $correct_answer = $_POST['correct_answer'];
+
+                        $query =  $connect->query("insert into question (topic,question,opt1,opt2,opt3,opt4,correct_ans) value('$topic','$question','$option1','$option2','$option3','$option4','$correct_answer')");
+
+                        if ($query) {
+                            redirect("index.php");
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
 </body>
 
 </html>
@@ -211,3 +277,4 @@ if (isset($_GET['deleteUser'])) {
         redirect("index.php");
     }
 }
+?>

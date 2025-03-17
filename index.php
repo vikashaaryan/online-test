@@ -45,7 +45,7 @@
                 <input type="password" name="c_password" class="border border-gray-400 px-4 py-2 rounded-md focus:ring-2 focus:ring-bg-[#2E5077] w-full" placeholder="Confirm password" required>
 
                 <!-- Submit Button -->
-                <button type="submit" name="submit" class="bg-[#172e47] cursor-pointer text-white font-semibold px-4 py-2 rounded-md hover:bg-[#2E5077] transition w-full">
+                <button type="submit" name="submit" class="bg-green-500 cursor-pointer text-white font-semibold px-4 py-2 rounded-md hover:bg-[#2E5077] transition w-full">
                     Sign Up
                 </button>
             </form>
@@ -70,7 +70,6 @@ if (isset($_POST['submit'])) {
     $c_password = md5($_POST['c_password']);
 
     $query = $connect->query("insert into users(name,gender,college_name,email,contact,password,c_password)value('$name','$gender','$college_name','$email','$contact','$password','$c_password') ");
-
-    redirect("start_quiz.php");
+    redirect("Quiz.php");
 }
 ?>

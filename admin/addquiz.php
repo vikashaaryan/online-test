@@ -13,7 +13,7 @@ include_once("../config/connect.php");
 </head>
 
 <body class="bg-gray-200">
-    <?php include_once "includes/header.php"; ?>
+    <?php include_once "include/heade.php"; ?>
     <div class="flex flex-col justify-center items-center">
         <h2 class="font-semibold text-2xl p-2 text-center">Add Quiz</h2>
         <form action="" method="POST" class="space-y-4 mt-8 w-[50rem] rounded shadow-xl bg-gray-400 p-5">
@@ -31,7 +31,7 @@ include_once("../config/connect.php");
             <textarea name="description" placeholder="Description" required
                 class="w-full p-2 border rounded"></textarea>
             <button type="submit" name="submit"
-                class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Submit</button>
+                class="w-full bg-green-500 font-semibold text-white py-2 rounded hover:bg-blue-600">Submit</button>
         </form>
         <?php
         if (isset($_POST["submit"])) {

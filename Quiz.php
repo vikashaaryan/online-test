@@ -1,4 +1,5 @@
-<?php include_once "config/connect.php"; ?>
+<?php include_once "config/connect.php";
+if (isset($_SESSION['user']));?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,13 +12,10 @@
 </head>
 
 <body>
-    <?php include_once "include/header.php"; ?>
+    <?php include_once "include/header2.php"; ?>
     <?php include_once "include/subheader.php"; ?>
-
-
-
+    
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-
 </body>
 
 </html>

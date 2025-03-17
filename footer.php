@@ -12,7 +12,6 @@
 
 <body> 
 
-    <!-- Navbar -->
     <div class="bg-white">
         <div class="bg-black  py-6 mt-1">
             <div class="flex justify-between mx-10">
@@ -38,16 +37,29 @@
                                 <form action="" method="post">
                                     <div class="flex flex-col gap-4">
                                         <input type="text" name="admin" placeholder="Enter Admin User Id . . . . . ." class="py-2 px-4 border border-gray-600 w-[50vh] rounded">
-                                        <input type="text" name="password" placeholder="Password . . . . . ." class="py-2 px-4 border border-gray-600 w-[50vh] rounded">
-                                        <input type="submit" name="submit" value="login" class="py-2 bg-blue-600 text-white font-semibold px-4 border border-gray-600 w-[20vh] text-center rounded">
+                                        <input type="password" name="password" placeholder="Password . . . . . ." class="py-2 px-4 border border-gray-600 w-[50vh] rounded">
+                                        <input type="submit" name="login" value="login" class="py-2 bg-blue-600 text-white font-semibold px-4 border border-gray-600 w-[20vh] text-center rounded">
                                     </div>
                                 </form>
+                                <?php
+                                if (isset($_POST['login'])) {
+                                    $admin = $_POST['admin'];
+                                    $password = md5($_POST['password']); 
+
+                                    $sql = $connect->query("SELECT * FROM admin WHERE admin='$admin' AND password='$password'");                                   
+                                    if ($sql->num_rows > 0) {
+                                        $_SESSION['admin'] = $admin;
+                                        redirect("admin/index.php");
+                                    } else {
+                                        $error = "Invalid admin or password!";
+                                    }
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="">
-                    <!-- Developer Button -->
                     <button class="py-2 px-4 text-yellow-500 border hover:border-yellow-500 rounded font-semibold"
                         type="button"
                         data-drawer-target="developer-drawer"
@@ -82,9 +94,9 @@
                                 <!-- Info -->
                                 <div class="text-gray-800 space-y-1">
                                     <p class="text-lg font-semibold">Vikash Kumar</p>
-                                    <p class="text-sm">📞 +91 7250407215</p>
-                                    <p class="text-sm">✉️ vikashaaryan23@gmail.com</p>
-                                    <p class="text-sm">🎓 Purnea College, Purnea</p>
+                                    <p class="text-sm"> +91 7250407215</p>
+                                    <p class="text-sm"> vikashaaryan23@gmail.com</p>
+                                    <p class="text-sm"> Purnea College, Purnea</p>
                                 </div>
                             </div>
                         </div>
@@ -164,7 +176,6 @@
                                 $query = $connect->query("insert into feedback (name,subject,email,feedback) value('$name','$subject','$email','$feedback')");
 
                                 if ($query) {
-                                    msg('feedback send sucessfull');
                                 }
                             }
 
